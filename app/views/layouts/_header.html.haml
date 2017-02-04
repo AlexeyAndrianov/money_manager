@@ -1,0 +1,21 @@
+%nav.navbar.navbar-default
+  .container
+    %ul.nav.navbar-nav
+      %li.nav-item.active
+        %a.nav-link{:href => "movies/new"}
+          New Movie
+          %span.sr-only (current)
+      %li.nav-item
+        %a.nav-link{:href => "#"} About
+
+    %ul.nav.navbar-nav.navbar-right
+      - if current_user  
+        %li
+          = link_to 'Sign out', destroy_user_session_path, method: :delete
+      - else
+        %li
+          = link_to 'Signup', new_user_registration_path
+        %li
+          = link_to 'Signin', new_user_session_path  
+
+
