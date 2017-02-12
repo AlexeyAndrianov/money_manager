@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = current_user.build_category(category_params)
     if @category.save
       redirect_to @category, notice: 'Category was successfully created'
     else

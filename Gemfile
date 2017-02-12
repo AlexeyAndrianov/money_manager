@@ -17,9 +17,10 @@ gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'pry'
-gem 'factory_girl'
+
 
 group :development, :test do
+  gem 'factory_girl_rails'
   gem 'byebug'
   gem 'rspec-rails', '~> 3.5'
 end
@@ -34,4 +35,5 @@ end
 
 group :test do
   gem 'capybara'  
+  gem 'database_cleaner'
 end
