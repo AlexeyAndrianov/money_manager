@@ -7,5 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 ['clothes', 'food', 'devices', 'rent'].each do |category_name|
-	Category.create(name: category_name)
+  Category.create(name: category_name)
 end

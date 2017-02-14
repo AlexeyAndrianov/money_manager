@@ -1,6 +1,6 @@
 <p> ALL CATEGORIES LIST </p>
 <% @categories.each do |category| %>
-	<p>
+  <p>
     <%= category.name %>
     <span><%= link_to 'Edit', edit_category_path(category) %></span>
     <span><%= link_to 'Show', category_path(category) %></span>

@@ -19,7 +19,7 @@ describe "Categories pages" do
 
     it do
       visit '/categories'
-      expect(page).to have_content('Edit')
+s      expect(page).to have_content('Edit')
       expect(page).to have_content('Destroy')      
       expect(page).to have_content('Show')
     end 
@@ -31,7 +31,7 @@ describe "Categories pages" do
       expect(page).to have_content('You need to sign in or sign up before continuing.')
     end
 
-    it "Sign in form" do
+    it "sign in form should be presented" do
       visit '/categories'
       expect(page).to have_content('Log in')
       expect(page).to have_content('Email')
