@@ -22,7 +22,6 @@ describe "Categories pages" do
     it do
       expect(page).to have_content('Edit')
       expect(page).to have_content('Destroy')      
-      expect(page).to have_content('Show')
     end 
   end
 

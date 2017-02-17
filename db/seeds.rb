@@ -6,6 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-['clothes', 'food', 'devices', 'rent'].each do |category_name|
-  Category.create(name: category_name)
+def self.create_categories_for_user(user)
+  ['clothes', 'food', 'devices', 'rent'].each do |category_name|
+    Category.create(name: category_name, user_id: user.id)
+  end
 end
+
+for i in 1..5 do
+  user = User.create(email: "user#{i}@test.com", password: "qwe123", password_confirmation: "qwe123")
+  create_categories_for_user(user)
+end
+
+
