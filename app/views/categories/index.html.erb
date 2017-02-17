@@ -1,11 +1,19 @@
 <p> ALL CATEGORIES LIST </p>
-<% @categories.each do |category| %>
-  <p>
-    <%= category.name %>
-    <span><%= link_to 'Edit', edit_category_path(category) %></span>
-    <span><%= link_to 'Show', category_path(category) %></span>
-    <span><%= link_to 'Destroy', category_path(category), data: {confirm: 'Are you sure?'}, method: :delete %> </span>
-  </p>
-<% end %>
-
+<table class="table table-striped">
+  <th> Name </th>
+  <th> Created at: </th>
+  <th> Updated at: </th>
+  <th> Actions </th>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.name%></td>
+      <td><%= category.created_at %></td>  
+      <td><%= category.updated_at %></td>
+      <td>
+        <span><%= link_to 'Edit', edit_category_path(category), class: "btn btn-default"%></span>
+        <span><%= link_to 'Destroy', category_path(category), class: "btn btn btn-danger", data: {confirm: 'Are you sure?'}, method: :delete %> </span>
+      </td>
+    </tr>
+  <% end %>
+</table>
 <%= link_to 'New category', new_category_path %>

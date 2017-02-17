@@ -8,4 +8,9 @@ FactoryGirl.define do
     name "clothes"
     user 
   end
+
+  factory :balance do
+    amount 100
+    user 
+  end
 end
