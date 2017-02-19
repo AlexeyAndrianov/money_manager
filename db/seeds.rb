@@ -12,9 +12,12 @@ def self.create_categories_for_user(user)
   end
 end
 
+def self.create_charges_for_user(user)
+  Charge.create(operation_date: Date.today, amount: 10, description: "na nalog", user_id: user.id, balance_id: user.balance.id)
+end
+
 for i in 1..5 do
   user = User.create(email: "user#{i}@test.com", password: "qwe123", password_confirmation: "qwe123")
   create_categories_for_user(user)
+  create_charges_for_user(user)
 end
-
-
