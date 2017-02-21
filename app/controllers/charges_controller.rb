@@ -35,7 +35,7 @@ class ChargesController < ApplicationController
   end
 
 
-private
+  private
 
   def charge_params
     params.require(:charge).permit(:amount, :description, :operation_date)
