@@ -7,8 +7,7 @@ class Charge < ActiveRecord::Base
   after_destroy :update_balance_amount
 
   validates :amount, presence: true
-
-  # add validation that amount COULD NOT BE EMPTY as well as operation_date!!!!!!!!!!!!!!!!!!
+  default_scope { order(operation_date: :desc) }
 
   private
 

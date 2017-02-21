@@ -1,4 +1,10 @@
 <p> ALL CATEGORIES LIST </p>
+<div class="form-group">
+  <button type="button" class="btn btn-default"><%= link_to 'New category', new_category_path %></button>
+</div>
+<div class="form-group">
+  <button type="button" class="btn btn-default"><%= link_to 'New Charge', new_charge_path %></button>
+</div>
 <table class="table table-striped">
   <th> Name </th>
   <th> Created at: </th>
@@ -16,4 +22,3 @@
     </tr>
   <% end %>
 </table>
-<%= link_to 'New category', new_category_path %>
