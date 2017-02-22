@@ -13,11 +13,11 @@ class ChargesController < ApplicationController
   end
 
   def index
-    @charges = current_user.charges
+    @charges = current_user.charges.page(params[:page])
   end
 
   def desroy
-    @charge = Charge.find(params[:id])
+    @charge = Charge.find(params[:page])
     @charge.destroy
   end
 

@@ -17,6 +17,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'pry'
+gem 'kaminari'
 
 
 group :development, :test do
@@ -34,7 +35,7 @@ group :production do
 end
 
 group :test do
-  gem 'capybara'  
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
 end

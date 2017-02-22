@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 	def index
-	  @categories = Category.all
+	  @categories = Category.all.page(params[:page])
 	end
 
 	def edit
