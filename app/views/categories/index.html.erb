@@ -1,4 +1,3 @@
-<%= paginate @categories %>
 <p> ALL CATEGORIES LIST </p>
 <div class="form-group">
   <button type="button" class="btn btn-default"><%= link_to 'New category', new_category_path %></button>
@@ -23,3 +22,5 @@
     </tr>
   <% end %>
 </table>
+<%= paginate @categories %>
+
