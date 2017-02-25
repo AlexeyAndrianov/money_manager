@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 	def index
-	  @categories = Category.all
+	  @categories = Category.all.page(params[:page])
 	end
 
 	def edit
@@ -10,30 +10,30 @@ class CategoriesController < ApplicationController
 	def update
 		@category = Category.find(params[:id])
 		if @category.update(category_params)
-			redirect_to @category, notice: 'Category was successfully updated'
+			redirect_to categories_path, notice: 'Category was successfully updated'
 		else
 			render :edit
 		end
 	end
 
   def new
-    @category = Category.new   
+    @category = Category.new
   end
 
   def create
-    @category = current_user.build_category(category_params)
+    @category = current_user.categories.build(category_params)
     if @category.save
-      redirect_to @category, notice: 'Category was successfully created'
+      redirect_to categories_path, notice: 'Category was successfully created'
     else
       render :new
-    end  
+    end
   end
 
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
- 
-    redirect_to categories_path, notice: 'Category was successfully deleted'        
+
+    redirect_to categories_path, notice: 'Category was successfully deleted'
   end
 
   private
