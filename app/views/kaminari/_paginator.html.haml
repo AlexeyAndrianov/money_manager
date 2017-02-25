@@ -12,7 +12,8 @@
       %li= prev_page_tag unless current_page.first?
       - each_page do |page|
         - if page.left_outer? || page.right_outer? || page.inside_window?
-          %li= page_tag page
+          = content_tag :li, class: page.current? ? 'active' : '' do
+            = page_tag page
         - elsif !page.was_truncated?
           %li= gap_tag
       %li= next_page_tag unless current_page.last?

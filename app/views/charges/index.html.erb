@@ -7,24 +7,8 @@
   <th> Description </th>
   <th> Operation date </th>
   <th> Actions </th>
-  <% @charges.each do |charge| %>
-    <%= content_tag :tr, class: charge.amount < 0 ? "danger" : "success" do %>
-      <%= content_tag(:td, charge.amount) %>
-      <%= content_tag(:td, charge.created_at) %>
-      <%= content_tag(:td, charge.updated_at) %>
-      <%= content_tag(:td, charge.description) %>
-      <%= content_tag(:td, charge.operation_date) %>
-      <%= content_tag :td do %>
-        <%= content_tag :span do %>
-          <%= link_to 'Edit', edit_charge_path(charge), class: "btn btn-default"%>
-        <% end %>
 
-        <%= content_tag :span do %>
-          <%= link_to 'Destroy', charge_path(charge), class: "btn btn btn-danger", data: {confirm: 'Are you sure?'}, method: :delete %>
-        <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
+  <%= render @charges %>
 </table>
 <%= paginate @charges %>
 
