@@ -9,7 +9,7 @@ class ChargesController < ApplicationController
   end
 
   def edit
-    @charge = Charge.find(params[:id])
+    @charge = current_user.charges.find(params[:id])
   end
 
   def index
@@ -17,12 +17,12 @@ class ChargesController < ApplicationController
   end
 
   def desroy
-    @charge = Charge.find(params[:page])
+    @charge = current_user.charges.find(params[:page])
     @charge.destroy
   end
 
   def update
-    @charge = Charge.find(params[:id])
+    @charge = current_user.charges.find(params[:id])
     if @charge.update(charge_params)
       redirect_to charges_path, notice: 'Charge was successfully updated'
     else

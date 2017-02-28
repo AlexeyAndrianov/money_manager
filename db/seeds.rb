@@ -21,3 +21,6 @@ for i in 1..5 do
   create_categories_for_user(user)
   create_charges_for_user(user)
 end
+
+
+# TODO: add seeds for plans
