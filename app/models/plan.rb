@@ -6,6 +6,7 @@ class Plan < ActiveRecord::Base
   belongs_to :category
 
   validates :amount, numericality: { greater_than_or_equal_to: 0 }
+  validates :user_id, :category_id, presence: true
 
   after_save :update_balance_planned_amount
 
