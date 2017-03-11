@@ -3,6 +3,9 @@ class Plan < ActiveRecord::Base
   belongs_to :category
   has_many :plan_charges
 
+  extend Enumerize
+  enumerize :status, in: [:live, :over], default: :live
+
   validates :name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
@@ -14,6 +17,7 @@ class Plan < ActiveRecord::Base
 
   # TODO: write validation that amount sholdn't be 0!
   # TODO: write validation that plan_charges.sum(:amount) should be less than amount
+
   def progress_percentage
     plan_charges.sum(:amount) * 100 / amount
   end
@@ -31,8 +35,4 @@ class Plan < ActiveRecord::Base
 
     user.balance.update_attribute(:planned_amount, current_planned_amount + amount)
   end
-
-  extend Enumerize
-  enumerize :status, in: [:live, :over], default: :live
-
 end

@@ -20,28 +20,6 @@ class PlanChargesController < ApplicationController
     redirect_to plan_path(@plan), notice: 'Plan charge was successfully destroyed'
   end
 
-  # def edit
-  #   @plan = current_user.plans.find(params[:id])
-  # end
-
-  # def index
-  #   @plans = current_user.plans.page(params[:page])
-  # end
-
-  # def desroy
-  #   @plan = Plan.find(params[:page])
-  #   @plan.destroy
-  # end
-
-  # def update
-  #   @plan = current_user.plans.find(params[:id])
-  #   if @plan.update(plan_params)
-  #     redirect_to plans_path, notice: 'Plan was successfully updated'
-  #   else
-  #     render :edit
-  #   end
-  # end
-
   private
 
   def plan_charges_params
