@@ -7,6 +7,7 @@ class CreatePlans < ActiveRecord::Migration
       t.float :amount
       t.integer :user_id
       t.integer :category_id
+      t.string :status
 
       t.timestamps null: false
     end

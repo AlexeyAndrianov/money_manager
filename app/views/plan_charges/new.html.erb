@@ -1,0 +1,3 @@
+<h1> Postpone some money for <%= link_to @plan.name, plan_path(@plan) %> </h1>
+
+<%= render partial: "form", locals: { plan: @plan, plan_charge: @plan_charge } %>

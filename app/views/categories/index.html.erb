@@ -2,6 +2,7 @@
 <div class="form-group">
   <button type="button" class="btn btn-default"><%= link_to 'New category', new_category_path %></button>
 </div>
+<% if @categories.present? %>
 <table class="table table-striped">
   <th> Name </th>
   <th> Created at: </th>
@@ -10,4 +11,4 @@
   <%= render @categories %>
 </table>
 <%= paginate @categories %>
-
+<% end %>

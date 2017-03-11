@@ -16,9 +16,9 @@ class ChargesController < ApplicationController
     @charges = current_user.charges.page(params[:page])
   end
 
-  def desroy
-    @charge = current_user.charges.find(params[:page])
-    @charge.destroy
+  def destroy
+    current_user.charges.find(params[:id]).destroy
+    redirect_to charges_path, notice: 'Charge was successfully destroyed'
   end
 
   def update

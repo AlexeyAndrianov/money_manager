@@ -18,6 +18,7 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'pry'
 gem 'kaminari'
+gem 'enumerize'
 
 
 group :development, :test do

@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
   has_many :categories, dependent: :destroy
   has_many :plans, dependent: :destroy
   has_many :charges, dependent: :destroy
+  has_many :plan_charges, dependent: :destroy
   has_one :balance, dependent: :destroy
 end

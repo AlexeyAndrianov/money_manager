@@ -16,6 +16,10 @@ class PlansController < ApplicationController
     @plans = current_user.plans.page(params[:page])
   end
 
+  def show
+    @plan = Plan.includes(:plan_charges).find_by(user: current_user, id: params[:id])
+  end
+
   def desroy
     @plan = Plan.find(params[:page])
     @plan.destroy
@@ -38,6 +42,6 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:amount, :name, :start_date, :end_date)
+    params.require(:plan).permit(:amount, :name, :category_id, :start_date, :end_date)
   end
 end
