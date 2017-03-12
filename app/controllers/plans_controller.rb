@@ -41,7 +41,7 @@ class PlansController < ApplicationController
   def complete
     @plan = current_user.plans.find(params[:id])
 
-    flash_message = if @plan.update_attributes(status: :completed)
+    flash_message = if @plan.to_completed.save
       'Plan was successfully updated'
     else
       'Plan can not be completed'

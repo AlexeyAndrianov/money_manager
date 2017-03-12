@@ -6,7 +6,7 @@ class PlanCharge < ActiveRecord::Base
   validate :check_amount
   validate :plan_charges_amount_sum_should_be_less_than_amount
 
-  after_save :update_planned_balance_amount
+  after_commit :update_planned_balance_amount
   after_destroy :update_planned_balance_amount
 
   private
@@ -18,7 +18,9 @@ class PlanCharge < ActiveRecord::Base
   end
 
   def update_planned_balance_amount
-    user.balance.update_attribute(:planned_amount, user.plan_charges.sum(:amount))
+    current_planned_amount = PlanCharge.joins(:plan).where(user_id: user.id, plans: { status: :active }).sum(:amount)
+
+    user.balance.update_attribute(:planned_amount, current_planned_amount)
   end
 
   def plan_charges_amount_sum_should_be_less_than_amount
