@@ -1,15 +1,15 @@
 %nav.navbar.navbar-default
   .container-fluid
     %ul.nav.navbar-nav
-
-      %li.nav-item
-        = link_to 'Home', root_path
-      %li.nav-item
-        = link_to 'Categories', categories_path, method: :GET
-      %li.nav-item
-        = link_to 'Charges', charges_path, method: :GET
-      %li.nav-item
-        = link_to 'Plans', plans_path, method: :GET
+      - if current_user
+        %li.nav-item
+          = link_to 'Home', root_path
+        %li.nav-item
+          = link_to 'Categories', categories_path, method: :GET
+        %li.nav-item
+          = link_to 'Charges', charges_path, method: :GET
+        %li.nav-item
+          = link_to 'Plans', plans_path, method: :GET
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user
