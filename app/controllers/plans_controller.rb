@@ -20,7 +20,7 @@ class PlansController < ApplicationController
     @plan = Plan.includes(:plan_charges).find_by(user: current_user, id: params[:id])
   end
 
-  def desroy
+  def destroy
     @plan = current_user.plans.find(params[:page])
     @plan.destroy
   end
