@@ -1,17 +1,17 @@
 class Plan < ActiveRecord::Base
+  extend Enumerize
+
   belongs_to :user
   belongs_to :category
   has_many :plan_charges
 
-  extend Enumerize
-  enumerize :status, in: [:live, :over], default: :live
+  enumerize :status, in: [:active, :completed], default: :active
 
   validates :name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0 }
   validates :user_id, :category_id, presence: true
-  validate :plan_charges_amount_sum_should_be_less_than_amount
 
   after_save :update_balance_planned_amount
 
@@ -22,12 +22,11 @@ class Plan < ActiveRecord::Base
     plan_charges.sum(:amount) * 100 / amount
   end
 
-  private
-  def plan_charges_amount_sum_should_be_less_than_amount
-    if plan_charges.sum(:amount) > balance.amount
-      errors.add(:plan_charges, "should be less than amount money needed to complete the plan")
-    end
+  def money_postponed?
+    progress_percentage == 100
   end
+
+  private
 
   def update_balance_planned_amount
     balance = user.balance

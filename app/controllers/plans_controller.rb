@@ -21,7 +21,7 @@ class PlansController < ApplicationController
   end
 
   def desroy
-    @plan = Plan.find(params[:page])
+    @plan = current_user.plans.find(params[:page])
     @plan.destroy
   end
 
@@ -36,6 +36,18 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
+  end
+
+  def complete
+    @plan = current_user.plans.find(params[:id])
+
+    flash_message = if @plan.update_attributes(status: :completed)
+      'Plan was successfully updated'
+    else
+      'Plan can not be completed'
+    end
+
+    redirect_to plan_path(@plan), notice: flash_message
   end
 
 

@@ -3,6 +3,9 @@
   Category: <%= link_to @plan.category.name, edit_category_path(@plan.category) %>
 </p>
 <p>
+  Status: <%= content_tag :span, @plan.status, class: "label label-#{bootstrap_status(@plan.status)}" %>
+</p>
+<p>
   Start date: <%= @plan.start_date %>
 </p>
 <p>
@@ -22,8 +25,9 @@ Progress:
   <% end %>
 </div>
 
-<%= link_to 'Postpone money', new_plan_plan_charge_path(@plan), class: "btn btn-success"%>
-<%= link_to 'End plan', new_plan_plan_charge_path(@plan), class: "btn btn-default"%>
+<%= link_to 'Postpone money', new_plan_plan_charge_path(@plan), class: "btn btn-success pull-left", style: "margin-right: 10px" %>
+<%= button_to 'Complete plan', complete_plans_path, params: { id: @plan.id }, class: "btn btn-default", disabled: (!@plan.money_postponed? || @plan.status.completed?)  %>
+
 <% if @plan.plan_charges.present? %>
   <h3> Plan Charges </h3>
 

@@ -1,5 +1,6 @@
 <tr>
   <td><%= link_to plan.name, plan_path(plan) %></td>
+  <td><%= content_tag :span, plan.status, class: "label label-#{bootstrap_status(plan.status)}" %></td>
   <td><%= plan.start_date %></td>
   <td><%= plan.end_date %></td>
   <td><%= plan.created_at %></td>
