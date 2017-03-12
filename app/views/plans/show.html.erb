@@ -1,0 +1,44 @@
+<h1><%= @plan.name %></h1>
+<p>
+  Category: <%= link_to @plan.category.name, edit_category_path(@plan.category) %>
+</p>
+<p>
+  Status: <%= content_tag :span, @plan.status, class: "label label-#{bootstrap_status(@plan.status)}" %>
+</p>
+<p>
+  Start date: <%= @plan.start_date %>
+</p>
+<p>
+  End date: <%= @plan.end_date %>
+</p>
+<h4>
+  Amount:
+  <span class="glyphicon glyphicon-euro"> <%= @plan.amount %></span>
+</h4>
+
+<br>
+<br>
+Progress:
+<div class="progress">
+  <%= content_tag :div, class: "progress-bar", role: "progressbar", 'aria-valuenow' => @plan.progress_percentage, 'aria-valuemax' => '100', style: ("min-width: 3em; width: #{@plan.progress_percentage}%;") do %>
+    <%= @plan.progress_percentage %>%
+  <% end %>
+</div>
+
+<%= link_to 'Postpone money', new_plan_plan_charge_path(@plan), class: "btn btn-success pull-left", style: "margin-right: 10px" %>
+<%= button_to 'Complete plan', complete_plans_path, params: { id: @plan.id }, class: "btn btn-default", disabled: (!@plan.money_postponed? || @plan.status.completed?)  %>
+
+<% if @plan.plan_charges.present? %>
+  <h3> Plan Charges </h3>
+
+  <br>
+  <br>
+
+  <table class="table table-striped">
+    <th> Amount </th>
+    <th> Created at </th>
+    <th> Actions </th>
+
+    <%= render @plan.plan_charges %>
+  </table>
+<% end %>

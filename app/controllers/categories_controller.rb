@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 	def index
-	  @categories = Category.all.page(params[:page])
-	end
+    @categories = current_user.categories.page(params[:page])
+  end
 
 	def edit
 		@category = Category.find(params[:id])

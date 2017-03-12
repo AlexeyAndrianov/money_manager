@@ -1,0 +1,14 @@
+<tr>
+  <td><%= link_to plan.name, plan_path(plan) %></td>
+  <td><%= content_tag :span, plan.status, class: "label label-#{bootstrap_status(plan.status)}" %></td>
+  <td><%= plan.start_date %></td>
+  <td><%= plan.end_date %></td>
+  <td><%= plan.created_at %></td>
+  <td><%= plan.updated_at %></td>
+  <td><%= link_to plan.category.name, edit_category_path(plan.category_id) %></td>
+  <td>
+    <span><%= link_to 'Postpone money', new_plan_plan_charge_path(plan), class: "btn btn-success"%></span>
+    <span><%= link_to 'Edit', edit_plan_path(plan), class: "btn btn-default"%></span>
+    <span><%= link_to 'Destroy', plan_path(plan), class: "btn btn btn-danger", data: {confirm: 'Are you sure?'}, method: :delete %> </span>
+  </td>
+</tr>

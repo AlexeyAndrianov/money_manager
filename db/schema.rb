@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217175105) do
+ActiveRecord::Schema.define(version: 20170312094718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "balances", force: :cascade do |t|
-    t.float    "amount",     default: 0.0, null: false
+    t.float    "amount",         default: 0.0, null: false
     t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.float    "planned_amount", default: 0.0
   end
 
   add_index "balances", ["user_id"], name: "index_balances_on_user_id", using: :btree
@@ -43,6 +44,26 @@ ActiveRecord::Schema.define(version: 20170217175105) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "plan_charges", force: :cascade do |t|
+    t.float    "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "plan_id"
+    t.integer  "user_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.float    "amount"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "status"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -62,4 +83,6 @@ ActiveRecord::Schema.define(version: 20170217175105) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "balances", "users"
+  add_foreign_key "plan_charges", "plans"
+  add_foreign_key "plan_charges", "users"
 end

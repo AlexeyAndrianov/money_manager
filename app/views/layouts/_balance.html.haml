@@ -1,5 +1,9 @@
 - if current_user
   %h4.text-right
     %span.glyphicon.glyphicon-euro
-      Balance: 
+      Balance:
       = current_user.balance.amount
+  %h4.text-right
+    %span.glyphicon.glyphicon-euro
+      Planned amount:
+      = current_user.balance.planned_amount

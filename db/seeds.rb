@@ -13,11 +13,28 @@ def self.create_categories_for_user(user)
 end
 
 def self.create_charges_for_user(user)
-  Charge.create(operation_date: Date.today, amount: 10, description: "na nalog", user_id: user.id, balance_id: user.balance.id)
+  Charge.create(operation_date: Date.today, amount: 10, description: "na nalog", user_id: user.id)
 end
 
-for i in 1..5 do
-  user = User.create(email: "user#{i}@test.com", password: "qwe123", password_confirmation: "qwe123")
-  create_categories_for_user(user)
-  create_charges_for_user(user)
+def self.create_plans_for_user(user)
+  { 'Bike' => 2500, 'Macbook' => 2000, 'Phone' => 700 }.each do |plan_name, amount|
+    Plan.create(
+      name: plan_name,
+      amount: amount,
+      start_date: Date.today,
+      end_date: Date.today + (1 + rand(4)).month,
+      user: user,
+      category: user.categories.find_by(name: 'devices')
+    )
+  end
+end
+
+
+ActiveRecord::Base.transaction do
+  for i in 1..5 do
+    user = User.create(email: "user#{i}@test.com", password: "qwe123", password_confirmation: "qwe123")
+    create_categories_for_user(user)
+    create_charges_for_user(user)
+    create_plans_for_user(user)
+  end
 end

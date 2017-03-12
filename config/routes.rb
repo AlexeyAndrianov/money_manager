@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  authenticated :user do
+    root to: 'statistics#index', as: :authenticated_root
+  end
+
   resources :categories, except: :show
   resources :charges, except: :show
+
+  resources :plans do
+    collection do
+      post 'complete'
+    end
+
+    resources :plan_charges, except: :show
+  end
   root 'home#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

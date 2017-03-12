@@ -11,7 +11,8 @@
       = render '/layouts/header'
 
       - flash.each do |name, msg|
-        = content_tag :div, msg, class: name
+        = content_tag :div, class: "alert #{bootstrap_class_for(name.to_sym)} fade in" do
+          = msg
 
-      = render partial: "layouts/balance"       
+      = render partial: "layouts/balance"
       = yield
