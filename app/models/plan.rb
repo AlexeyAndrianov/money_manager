@@ -3,7 +3,7 @@ class Plan < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :category
-  has_many :plan_charges
+  has_many :plan_charges, dependent: :destroy
 
   enumerize :status, in: [:active, :completed], default: :active
 

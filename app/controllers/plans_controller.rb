@@ -21,8 +21,9 @@ class PlansController < ApplicationController
   end
 
   def destroy
-    @plan = current_user.plans.find(params[:page])
+    @plan = current_user.plans.find(params[:id])
     @plan.destroy
+    redirect_to plans_path
   end
 
   def update
