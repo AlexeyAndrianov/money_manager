@@ -2,7 +2,7 @@ class PlansController < ApplicationController
   def create
     @plan = current_user.plans.build(plan_params)
     if @plan.save
-      redirect_to charges_path, notice: 'Plan was successfully created'
+      redirect_to plans_path, notice: 'Plan was successfully created'
     else
       render :new
     end
