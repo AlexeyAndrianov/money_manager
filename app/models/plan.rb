@@ -44,8 +44,10 @@ class Plan < ActiveRecord::Base
   end
 
   def reduce_balance_after_completion
-    current_balance = user.balance.amount
+    if status == :active
+      current_balance = user.balance.amount
 
-    user.balance.update_attributes(planned_amount: user.balance.planned_amount - amount, amount: current_balance - amount)
+      user.balance.update_attributes(planned_amount: user.balance.planned_amount - amount, amount: current_balance - amount)
+    end
   end
 end
