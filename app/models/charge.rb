@@ -4,6 +4,7 @@ class Charge < ActiveRecord::Base
   delegate :balance, to: :user
 
   after_save :update_balance_amount
+  after_save :update_money_charged
   after_destroy :update_balance_amount
 
   validates :amount, presence: true

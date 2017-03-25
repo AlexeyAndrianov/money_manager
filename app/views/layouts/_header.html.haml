@@ -1,15 +1,17 @@
 %nav.navbar.navbar-default
   .container-fluid
-    %ul.nav.navbar-nav
+    .navbar-header
       - if current_user
-        %li.nav-item
-          = link_to 'Home', root_path
-        %li.nav-item
-          = link_to 'Categories', categories_path, method: :GET
-        %li.nav-item
-          = link_to 'Charges', charges_path, method: :GET
-        %li.nav-item
-          = link_to 'Plans', plans_path, method: :GET
+        .navbar-brand
+          Balance:
+          %span.glyphicon.glyphicon-euro
+            = current_user.balance.amount
+        .navbar-brand
+          Planned amount:
+          %span.glyphicon.glyphicon-euro
+            = current_user.balance.planned_amount
+
+    %ul.nav.navbar-nav
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user
