@@ -7,4 +7,5 @@ class Balance < ActiveRecord::Base
   def free_amount
     amount - planned_amount
   end
+
 end

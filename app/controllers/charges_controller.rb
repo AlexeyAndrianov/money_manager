@@ -13,7 +13,7 @@ class ChargesController < ApplicationController
   end
 
   def index
-    @charges = current_user.charges.page(params[:page])
+    @charges = current_user.charges.with_status(:created_by_user).page(params[:page])
   end
 
   def destroy

@@ -9,10 +9,22 @@
   %body
     .container
       = render '/layouts/header'
+      .row
+        .col-md-2
+          - if current_user
+            %ul.nav.nav-pills.nav-stacked
+              %li{:role => "presentation"}
+                = link_to 'Home', root_path
+              %li{:role => "presentation"}
+                = link_to 'Categories', categories_path, method: :GET
+              %li{:role => "presentation"}
+                = link_to 'Charges', charges_path, method: :GET
+              %li{:role => "presentation"}
+                = link_to 'Plans', plans_path, method: :GET
 
-      - flash.each do |name, msg|
-        = content_tag :div, class: "alert #{bootstrap_class_for(name.to_sym)} fade in" do
-          = msg
+        .col-md-10
+          - flash.each do |name, msg|
+            = content_tag :div, class: "alert #{bootstrap_class_for(name.to_sym)} fade in" do
+              = msg
 
-      = render partial: "layouts/balance"
-      = yield
+          = yield
