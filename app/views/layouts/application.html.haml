@@ -13,7 +13,7 @@
         .col-md-2
           - if current_user
             %ul.nav.nav-pills.nav-stacked
-              %li.active{:role => "presentation"}
+              %li{:role => "presentation"}
                 = link_to 'Home', root_path
               %li{:role => "presentation"}
                 = link_to 'Categories', categories_path, method: :GET

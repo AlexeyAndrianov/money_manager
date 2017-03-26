@@ -1,8 +1,6 @@
 class Balance < ActiveRecord::Base
   belongs_to :user
   has_many :charges
-  has_one :money_charged
-  has_one :money_spent
   # add column money_charged (sum of all charges)
   # add column money_spent
   # add callback after_create to Charge that updates money_charged for Balance
@@ -14,11 +12,4 @@ class Balance < ActiveRecord::Base
     amount - planned_amount
   end
 
-  def money_charged
-    money_charged = money_charged + self.charges.last
-  end
-
-  def money_spent
-
-  end
 end

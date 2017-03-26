@@ -3,5 +3,5 @@ class Category < ActiveRecord::Base
   has_many :plans
 
 	validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { scope: :user }
 end
