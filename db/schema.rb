@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 20170326092049) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.float    "planned_amount", default: 0.0
-    t.float    "money_charged"
-    t.float    "money_spent"
   end
 
   add_index "balances", ["user_id"], name: "index_balances_on_user_id", using: :btree
