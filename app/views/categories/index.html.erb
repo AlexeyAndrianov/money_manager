@@ -1,14 +1,17 @@
-<p> ALL CATEGORIES LIST </p>
+<h1> All Categories List </h1>
 <div class="form-group">
   <button type="button" class="btn btn-default"><%= link_to 'New category', new_category_path %></button>
 </div>
 <% if @categories.present? %>
-<table class="table table-striped">
-  <th> Name </th>
-  <th> Created at: </th>
-  <th> Updated at: </th>
-  <th> Actions </th>
-  <%= render @categories %>
+  <table class="table table-striped">
+    <th> Name </th>
+    <th> Created at: </th>
+    <th> Updated at: </th>
+    <th> Actions </th>
+
+    <%= render @categories %>
 </table>
-<%= paginate @categories %>
+  <%= paginate @categories %>
+<% else %>
+  <p class="alert alert-warning"> Add your first Category! </p>
 <% end %>
