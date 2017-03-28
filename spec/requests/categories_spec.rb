@@ -5,7 +5,7 @@ describe "Categories pages" do
   let!(:category) { FactoryGirl.create(:category, user: user) }
 
   describe 'authorized user' do
-    before(:each) do 
+    before(:each) do
       sign_in(user)
       visit '/categories'
     end
@@ -13,16 +13,16 @@ describe "Categories pages" do
 
     it do
       expect(page).to have_content('New category')
-    end  
+    end
 
     it do
-      expect(page).to have_content('ALL CATEGORIES LIST')
-    end 
+      expect(page).to have_content('All Categories List')
+    end
 
     it do
       expect(page).to have_content('Edit')
-      expect(page).to have_content('Destroy')      
-    end 
+      expect(page).to have_content('Destroy')
+    end
   end
 
   describe 'unauthorized user' do

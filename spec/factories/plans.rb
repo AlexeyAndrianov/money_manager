@@ -6,5 +6,7 @@ FactoryGirl.define do
     start_date "2017-02-28"
     end_date "2017-02-28"
     amount 1
+    user
+    category
   end
 end
