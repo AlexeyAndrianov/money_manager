@@ -25,7 +25,7 @@ def self.plans_for_user(user)
 end
 
 def self.create_plan_charges_for_user(user)
-  Plan_charge.create(operation_date: Date.today, amount: 1, description: "moar money", user_id: user.id)
+  PlanCharge.create(operation_date: Date.today, amount: 1, description: "moar money", user_id: user.id, plan_id: plan.id)
 end
 
 def self.create_plans_for_user(user)
