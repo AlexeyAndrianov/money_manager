@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :plan_charge do
     amount 1.5
-    references ""
     plan
     user
   end

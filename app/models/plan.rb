@@ -13,7 +13,7 @@ class Plan < ActiveRecord::Base
   validates :amount, numericality: { greater_than_or_equal_to: 0 }
   validates :user_id, :category_id, presence: true
 
-  after_commit :update_balance_planned_amount
+  # after_commit :update_balance_planned_amount
   after_destroy :reduce_balance_after_completion
 
   # TODO: write validation that amount sholdn't be 0!
@@ -38,11 +38,11 @@ class Plan < ActiveRecord::Base
 
   private
 
-  def update_balance_planned_amount
-    current_planned_amount = PlanCharge.joins(:plan).where(user_id: user.id, plans: { status: :active }).sum(:amount)
+  # def update_balance_planned_amount
+  #   current_planned_amount = PlanCharge.joins(:plan).where(user_id: user.id, plans: { status: :active }).sum(:amount)
 
-    user.balance.update_attribute(:planned_amount, current_planned_amount)
-  end
+  #   user.balance.update_attribute(:planned_amount, current_planned_amount)
+  # end
 
   def reduce_balance_after_completion
     if status == :active
