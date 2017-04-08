@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+ruby "2.3.1"
+
 gem 'rails', '4.2.7.1'
 
 gem 'bootstrap-sass', '~> 3.3.7'
@@ -20,6 +22,8 @@ gem 'pry'
 gem 'kaminari'
 gem 'enumerize'
 
+gem 'mime-types'
+gem 'mime-types-data'
 
 group :development, :test do
   gem 'factory_girl_rails'
