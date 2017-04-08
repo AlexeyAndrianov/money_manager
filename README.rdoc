@@ -1,5 +1,6 @@
 == README
 
+{<img src="https://travis-ci.org/AlexeyAndrianov/money_manager.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/AlexeyAndrianov/money_manager]
 
 [![Build Status](https://travis-ci.org/AlexeyAndrianov/money_manager.svg?branch=master)](https://travis-ci.org/AlexeyAndrianov/money_manager)
 
