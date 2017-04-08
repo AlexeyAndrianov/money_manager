@@ -19,7 +19,7 @@ gem 'simple_form'
 gem 'pry'
 gem 'kaminari'
 gem 'enumerize'
-
+gem 'mime-types'
 
 group :development, :test do
   gem 'factory_girl_rails'
