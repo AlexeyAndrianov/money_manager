@@ -4,6 +4,7 @@
 
 Models:
 -balance
+
 -category
 -charge
 -plan
