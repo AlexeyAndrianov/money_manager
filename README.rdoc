@@ -3,17 +3,31 @@
 {<img src="https://travis-ci.org/AlexeyAndrianov/money_manager.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/AlexeyAndrianov/money_manager]
 
 Models:
--balance
 
--category
+-balance (belongs to user and contains charges)
 
--charge
+-category (combining plans with the same type)
 
--plan
+-charge (changing user's balance)
 
--plan_charge
+-plan (is the amount of money we should spend in order to afford something we need)
 
--user
+-plan_charge (is the part of affordable money (current user's balance) we are willing to spend on any of plans to complete them
+or just partially make them closer to the finishing )
 
-Please feel free to use a different markup language if you do not plan to run
+-user (is the one who owns balance, categories and plans)
+
+1) Balance model is used to describe user's balance. It can be changed with adding or deleting charges as well as decreasing user's balance amount after plan completion.
+Balance's "planned_amount" is the amount of money we postponed on every plan we have.
+Balcences's "free_amount" is the amount of money we didnt plan yet.
+
+2) Category belongs to user, has many plans and unique name.
+
+3) Charges are made to change user's balance. they can be added, deleted or edited. each time we add/delete/change plan, user's balance is being recalculated.
+
+4)Plan belongs to the certain category. has it's own amount of money to popspone on this plan in order to complete it.
+
+5) PlanCharge is the way to postpone(plan some poney from user's balance) to finish(complete) plan after required amount of funds is raised.
+
+
 <tt>rake doc:app</tt>.
