@@ -1,7 +1,7 @@
 <tr>
   <td ><%= category.name %></td>
-  <td><%= category.created_at %></td>
-  <td><%= category.updated_at %></td>
+  <td><%= category.created_at.strftime("%H:%M, %d-%B") %></td>
+  <td><%= category.updated_at.strftime("%H:%M, %d-%B") %></td>
   <td>
     <span><%= link_to 'Edit', edit_category_path(category), class: "btn btn-default"%></span>
     <span><%= link_to 'Destroy', category_path(category), class: "btn btn btn-danger", data: {confirm: 'Are you sure?'}, method: :delete %> </span>

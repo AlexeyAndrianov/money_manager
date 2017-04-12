@@ -12,7 +12,9 @@ describe "Charges pages" do
     before do
       visit charges_path
     end
-    it { page.should have_link('New Charge', href: new_charge_path) }
+    it do
+      expect(page.body).to match('New charge')
+    end
   end
 
   describe "New charge page" do
