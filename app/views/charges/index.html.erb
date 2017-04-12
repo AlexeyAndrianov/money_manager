@@ -1,5 +1,5 @@
 <h1> Charges </h1>
-<button type="button" class="btn btn-default"><%= link_to 'New Charge', new_charge_path %></button>
+<%= button_to 'New charge', new_charge_path, method: :get, class: "btn btn-default" %>
 <% if @charges.present? %>
   <table class="table table-striped">
     <th > Amount </th>
