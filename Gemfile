@@ -22,6 +22,8 @@ gem 'pry'
 gem 'kaminari'
 gem 'enumerize'
 gem 'i18n'
+gem 'rubocop', require: false
+gem 'rubocop-rspec'
 
 gem 'mime-types'
 gem 'mime-types-data'
