@@ -1,28 +1,33 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+{<img src="https://travis-ci.org/AlexeyAndrianov/money_manager.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/AlexeyAndrianov/money_manager]
 
-Things you may want to cover:
+Models:
 
-* Ruby version
+-balance (belongs to user and contains charges)
 
-* System dependencies
+-category (combining plans with the same type)
 
-* Configuration
+-charge (changing user's balance)
 
-* Database creation
+-plan (is the amount of money we should spend in order to afford something we need)
 
-* Database initialization
+-plan_charge (is the part of affordable money (current user's balance) we are willing to spend on any of plans to complete them
+or just partially make them closer to the finishing )
 
-* How to run the test suite
+-user (is the one who owns balance, categories and plans)
 
-* Services (job queues, cache servers, search engines, etc.)
+1) Balance model is used to describe user's balance. It can be changed with adding or deleting charges as well as decreasing user's balance amount after plan completion.
+Balance's "planned_amount" is the amount of money we postponed on every plan we have.
+Balcences's "free_amount" is the amount of money we didnt plan yet.
 
-* Deployment instructions
+2) Category belongs to user, has many plans and unique name.
 
-* ...
+3) Charges are made to change user's balance. they can be added, deleted or edited. each time we add/delete/change plan, user's balance is being recalculated.
+
+4)Plan belongs to the certain category. has it's own amount of money to popspone on this plan in order to complete it.
+
+5) PlanCharge is the way to postpone(plan some poney from user's balance) to finish(complete) plan after required amount of funds is raised.
 
 
-Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

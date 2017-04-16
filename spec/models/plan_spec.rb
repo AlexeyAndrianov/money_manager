@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe Plan, type: :model do
-  let(:plan) { FactoryGirl.create(:plan, amount: 10) }
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:balance) { FactoryGirl.create(:balance, user: user, amount: 100, planned_amount: 100) }
+  let(:plan) { FactoryGirl.create(:plan, user: user, amount: 10, status: :active) }
+  let(:completed_plan) { FactoryGirl.create(:plan, amount: 10, status: :completed) }
 
   it { should belong_to(:user)}
   it { should belong_to(:category)}
@@ -17,9 +20,10 @@ describe Plan, type: :model do
     end
   end
 
-#  describe "plan dates" do
-#   it "plan starting date should be valid " do
-#      expect(plan.start_date).to be eq(Date.today)
-#    end
-#  end
+  describe "callbacks" do
+    it "reduce_balance_after_completion reducing balance amount" do
+      expect { plan.run_callbacks(:destroy) }.to change{ balance.planned_amount }.from(100).to(90)
+      expect { completed_plan.run_callbacks(:destroy) }.not_to change{ balance.planned_amount }
+    end
+  end
 end

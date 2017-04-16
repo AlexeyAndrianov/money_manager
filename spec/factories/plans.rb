@@ -5,7 +5,7 @@ FactoryGirl.define do
     name "MyString"
     start_date "2017-02-28"
     end_date "2017-02-28"
-    amount 1
+    amount 100
     user
     category
   end

@@ -254,6 +254,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mime-types
+  mime-types-data
   pg
   pry
   rails (= 4.2.7.1)

@@ -12,8 +12,12 @@ def self.create_categories_for_user(user)
   end
 end
 
-def self.create_charges_for_user(user)
-  Charge.create(operation_date: Date.today, amount: 10, description: "na nalog", user_id: user.id)
+def self.plans_for_user(user)
+  Plan.create(start_date: Date.today, end_date: Date.today, amount: 10, user_id: user.id, category: food)
+end
+
+def self.create_plan_charges_for_user(user)
+  PlanCharge.create(operation_date: Date.today, amount: 1, description: "moar money", user_id: user.id, plan_id: plan.id)
 end
 
 def self.plans_for_user(user)
