@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = current_user.categories.find(params[:id])
+    @category = Category.includes(:plans).find_by(id: params[:id], user: current_user)
   end
 
   def update
