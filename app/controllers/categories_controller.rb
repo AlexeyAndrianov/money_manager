@@ -4,11 +4,12 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    @category = current_user.categories.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
+    @category = current_user.categories.find(params[:id])
+
     if @category.update(category_params)
       redirect_to categories_path, notice: 'Category was successfully updated'
     else
