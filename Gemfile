@@ -21,6 +21,9 @@ gem 'simple_form'
 gem 'pry'
 gem 'kaminari'
 gem 'enumerize'
+gem 'i18n'
+gem 'rubocop', require: false
+gem 'rubocop-rspec'
 
 gem 'mime-types'
 gem 'mime-types-data'
@@ -40,6 +43,7 @@ group :production do
 end
 
 group :test do
+  gem 'simplecov', :require => false
   gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda-matchers'

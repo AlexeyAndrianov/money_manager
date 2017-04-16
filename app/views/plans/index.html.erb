@@ -1,5 +1,5 @@
 <div class="form-group">
-  <button type="button" class="btn btn-default"><%= link_to 'New plan', new_plan_path %></button>
+<%= button_to 'New plan', new_plan_path, method: :get, class: "btn btn-default" %>
 </div>
 <% if @plans.present? %>
   <table class="table table-striped">

@@ -13,7 +13,7 @@ class PlansController < ApplicationController
   end
 
   def index
-    @plans = current_user.plans.page(params[:page])
+    @plans = current_user.plans.order(created_at: :desc).page(params[:page])
   end
 
   def show

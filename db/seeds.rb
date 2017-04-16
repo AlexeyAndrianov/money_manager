@@ -20,6 +20,14 @@ def self.create_plan_charges_for_user(user)
   PlanCharge.create(operation_date: Date.today, amount: 1, description: "moar money", user_id: user.id, plan_id: plan.id)
 end
 
+def self.plans_for_user(user)
+  Plan.create(start_date: Date.today, end_date: Date.today, amount: 10, user_id: user.id, category: food)
+end
+
+def self.create_plan_charges_for_user(user)
+  PlanCharge.create(operation_date: Date.today, amount: 1, description: "moar money", user_id: user.id, plan_id: plan.id)
+end
+
 def self.create_plans_for_user(user)
   { 'Bike' => 2500, 'Macbook' => 2000, 'Phone' => 700 }.each do |plan_name, amount|
     Plan.create(

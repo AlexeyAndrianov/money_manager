@@ -30,7 +30,8 @@ class Plan < ActiveRecord::Base
   def to_completed
     user.charges.create(status: :system, amount: -amount, operation_date: Date.today)
 
-    user.balance.planned_amount -= amount
+    new_planned_amount = user.balance.planned_amount -= amount
+    user.balance.update_attribute(:planned_amount, new_planned_amount)
 
     self.status = :completed
     self

@@ -2,6 +2,11 @@
 
 {<img src="https://travis-ci.org/AlexeyAndrianov/money_manager.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/AlexeyAndrianov/money_manager]
 
+[![Build Status](https://travis-ci.org/AlexeyAndrianov/money_manager.svg?branch=master)](https://travis-ci.org/AlexeyAndrianov/money_manager)
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
 Models:
 
 -balance (belongs to user and contains charges)

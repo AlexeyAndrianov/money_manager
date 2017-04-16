@@ -12,7 +12,7 @@ describe "Categories pages" do
 
 
     it do
-      expect(page).to have_content('New category')
+      expect(page.body).to match('New category')
     end
 
     it do

@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to plan_charge.amount, edit_plan_plan_charge_path(plan_charge.plan, plan_charge) %></td>
-  <td><%= plan_charge.created_at %></td>
+  <td><%= plan_charge.created_at.strftime("%H:%M, %d-%B") %></td>
   <td>
     <span><%= link_to 'Destroy', plan_plan_charge_path(plan_charge.plan, plan_charge), class: "btn btn btn-danger", data: {confirm: 'Are you sure?'}, method: :delete %> </span>
   </td>

@@ -1,6 +1,6 @@
 <h1> All Categories List </h1>
 <div class="form-group">
-  <button type="button" class="btn btn-default"><%= link_to 'New category', new_category_path %></button>
+  <%= button_to 'New category', new_category_path, method: :get, class: "btn btn-default" %>
 </div>
 <% if @categories.present? %>
   <table class="table table-striped">
@@ -10,7 +10,7 @@
     <th> Actions </th>
 
     <%= render @categories %>
-</table>
+  </table>
   <%= paginate @categories %>
 <% else %>
   <p class="alert alert-warning"> Add your first Category! </p>
