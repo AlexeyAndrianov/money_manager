@@ -1,3 +1,15 @@
 <tr>
-  <td ><%= plan.name %></td>
+  <td><%= link_to plan.name, plan_path(plan) %></td>
+  <td><%= content_tag :span, plan.status, class: "label label-#{bootstrap_status(plan.status)}" %></td>
+  <td><%= link_to plan.amount %></td>
+  <td><%= plan.start_date.strftime("%d-%B") %></td>
+  <td><%= plan.end_date.strftime("%d-%B") %></td>
+  <td><%= plan.created_at.strftime("%H:%M, %d-%B") %></td>
+  <td><%= plan.updated_at.strftime("%H:%M, %d-%B") %></td>
+  <td>
+    <span><%= link_to 'Postpone money', new_plan_plan_charge_path(plan), class: "btn btn-success"%></span>
+    <span><%= link_to 'Edit', edit_plan_path(plan), class: "btn btn-default"%></span>
+    <span><%= link_to 'Destroy', plan_path(plan), class: "btn btn btn-danger", data: {confirm: 'Are you sure?'}, method: :delete %> </span>
+  </td>
 </tr>
+
