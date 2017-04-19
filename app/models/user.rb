@@ -3,12 +3,16 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :timeoutable, :omniauthable, :confirmable, :lockable
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   # TODO: refactor with with_options
-  has_many :categories, dependent: :destroy
-  has_many :plans, dependent: :destroy
-  has_many :charges, dependent: :destroy
-  has_many :plan_charges, dependent: :destroy
-  has_one :balance, dependent: :destroy
+  with_options dependent: :destroy do |options|
+    has_many :categories, dependent: :destroy
+    has_many :plans, dependent: :destroy
+    has_many :charges, dependent: :destroy
+    has_many :plan_charges, dependent: :destroy
+    has_one :balance, dependent: :destroy
+  end
 end

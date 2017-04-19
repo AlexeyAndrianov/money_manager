@@ -10,14 +10,12 @@ class Plan < ActiveRecord::Base
   validates :name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :amount, numericality: { greater_than_or_equal_to: 0 }
+  validates :amount, numericality:  {greater_than: 0}
   validates :user_id, :category_id, presence: true
-
-  # after_commit :update_balance_planned_amount
+#  validates :self.plan_, numericality: {less_than: 100}
+#TODO plan_charges.sum should be less than plan.amount
   after_destroy :reduce_balance_after_completion
 
-  # TODO: write validation that amount sholdn't be 0!
-  # TODO: write validation that plan_charges.sum(:amount) should be less than amount
 
   def progress_percentage
     plan_charges.sum(:amount) * 100 / amount
@@ -38,12 +36,6 @@ class Plan < ActiveRecord::Base
   end
 
   private
-
-  # def update_balance_planned_amount
-  #   current_planned_amount = PlanCharge.joins(:plan).where(user_id: user.id, plans: { status: :active }).sum(:amount)
-
-  #   user.balance.update_attribute(:planned_amount, current_planned_amount)
-  # end
 
   def reduce_balance_after_completion
     if status == :active

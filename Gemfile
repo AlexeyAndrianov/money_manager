@@ -28,6 +28,8 @@ gem 'rubocop-rspec'
 gem 'mime-types'
 gem 'mime-types-data'
 
+gem 'omniauth-facebook'
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'byebug'
