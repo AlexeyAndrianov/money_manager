@@ -6,7 +6,7 @@ defaults: &defaults
   password:
 
 production:
-  <<: *defaults
+  url: <%= ENV["DATABASE_URL"] %>
 
 test:
   database: money_manager_test
