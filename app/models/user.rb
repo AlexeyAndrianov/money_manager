@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
          :timeoutable, :omniauthable, :lockable#, :confirmable,
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-  # TODO: refactor with with_options
   with_options dependent: :destroy do |options|
     has_many :categories, dependent: :destroy
     has_many :plans, dependent: :destroy

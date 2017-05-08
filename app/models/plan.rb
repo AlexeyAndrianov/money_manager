@@ -12,8 +12,6 @@ class Plan < ActiveRecord::Base
   validates :end_date, presence: true
   validates :amount, numericality:  {greater_than: 0}
   validates :user_id, :category_id, presence: true
-#  validates :self.plan_, numericality: {less_than: 100}
-#TODO plan_charges.sum should be less than plan.amount
   after_destroy :reduce_balance_after_completion
 
 
